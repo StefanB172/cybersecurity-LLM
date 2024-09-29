@@ -1,0 +1,66 @@
+rules:
+  - id: webview-javascript-enabled
+    message: JavaScript is enabled in WebView, check if there is any potentially dangerous user controlled variable, that could introduce an XSS attack.
+    languages: [java, kotlin]
+    severity: WARNING
+    metadata:
+      owasp-mobile: "M4: Insufficient Input/Output Validation"
+      category: "M4"
+      llmchain: "vuln"
+      technology: android
+    pattern: $SETTINGS.setJavaScriptEnabled(true);
+
+  - id: webview-loadurl-call
+    message: Call to loadUrl method detected, check if there is any potentially dangerous user controlled variable, that could introduce a vulnerability.
+    languages: [java, kotlin]
+    severity: WARNING
+    metadata:
+      owasp-mobile: "M4: Insufficient Input/Output Validation"
+      category: "M4"
+      llmchain: "vuln"
+      technology: android
+    pattern: $W.loadUrl($DATA);
+
+  - id: hidden-ui-elements
+    message: Hidden elements in view can be used to hide data from user. But this data can be leaked, check if some sensitive data is hidden in this element.
+    languages: [java, kotlin]
+    severity: WARNING
+    metadata:
+      owasp-mobile: "M4: Insufficient Input/Output Validation"
+      category: "M4"
+      llmchain: "vuln"
+      technology: android
+    pattern-either:
+      - pattern: |
+          $X.setVisibility(View.GONE);
+      - pattern: |
+          $X.setVisibility(View.INVISIBLE);
+
+  - id: java-sql-usage-advanced
+    languages: [java]
+    message: Potential SQL query usage, check for SQL injection vulnerabilities.
+    severity: WARNING
+    metadata:
+      owasp-mobile: "M4: Insufficient Input/Output Validation"
+      category: "M4"
+      llmchain: "vuln"
+      technology: android
+    pattern-either:
+      - pattern: $DB.rawQuery(...);
+      - pattern: $DB.query(...);
+      - pattern: $DB.prepareStatement(...);
+      - pattern: $DB.Query(...);
+
+  - id: encryption-method
+    languages: [java]
+    message: "Check the encryption method implemented, is it weak and vulnerable encryption definition?"
+    severity: WARNING
+    metadata:
+      owasp-mobile: "TODO"
+      category: security
+      technology: android
+      llmchain: "vuln"
+    pattern: "
+      byte[] encrypt(...){
+      ...
+      }"
