@@ -5,5 +5,5 @@ Code repository and result data for all the analyses done for the paper Using ge
 
 now published in the journal Electronics. Full citation below:
 
-Balogh, S.; Mlyncek, M.;Vranak, O.; Zajac, P. Using generative AI models to support cybersecurity analysts. Electronics 2024, 1, 0.
-https://doi.org/
+Balogh, Š.; Mlynček, M.; Vraňák, O.; Zajac, P. Using Generative AI Models to Support Cybersecurity Analysts. 
+Electronics 2024, 13, 4718. https://doi.org/10.3390/electronics13234718 
